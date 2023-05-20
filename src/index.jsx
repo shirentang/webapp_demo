@@ -1,8 +1,17 @@
 import React from "react"
 import ReactDOM from 'react-dom/client'
+import App from "./App"
 
+//改变REM换算比例
 import 'lib-flexible'
+
+//配置antd-mobile的语法包，国际化处理
+import { ConfigProvider } from "antd-mobile";
+import zhCN from 'antd-mobile/es/locales/zh-CN'
+
+//样式
 import './index.less'
+
 
 // css in jsx 不生效,webpack里的postcss-pxtorem无法处理。
 // import styled from "styled-components";
@@ -17,7 +26,8 @@ import './index.less'
 //     }
 // `;
 
-//处理最大宽度
+
+/* 处理最大宽度 */
 (function () {
     const handleMax = () => {
       let html = document.documentElement,
@@ -35,7 +45,7 @@ import './index.less'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <>
-    123
-    </>
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
 )
