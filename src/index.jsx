@@ -35,7 +35,7 @@ import './index.less'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <div className="box">
-        123
-    </div>
+    <>
+    123
+    </>
 )

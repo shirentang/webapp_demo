@@ -1,7 +1,7 @@
 知乎日报-webapp
   技术栈：create-react-app、React18、redux/react-redux/redux-toolkit、
   react-router-dom、axios、less、AntdMobile ...
-  
+
   (css-in-js，即styled-components无法适配移动端，故不使用)
 
 
@@ -43,7 +43,7 @@
               rootValue:75, //基于lib-flexible，设置为1rem为75px。在webpack编译的时候，使用px2rem插件，将1rem=75px自动转换。
               propList:['*'] //对所有文件中的样式都生效 {包括antdmobile组件库中的样式}
             })
-      @2 在入口中，倒入lib-flexible，确保在不同的设备上，可以等比例对rem的换算比例进行缩放
+      @2 在入口(src/index.jsx)中，倒入lib-flexible，确保在不同的设备上，可以等比例对rem的换算比例进行缩放
 
 
     4.配置路由管理
