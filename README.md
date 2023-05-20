@@ -80,3 +80,11 @@
         $ pm2 start server.js --name zhihu 用pm2持久管理服务
     5.验证后端是否启动成功
         http://127.0.0.1:7100/news_latest 获取到数据说明启动成功
+
+
+
+
+
+
+
+      用函数组件来写路由，避免withrouter(函数组件对于类组件的好处)
