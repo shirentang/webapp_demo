@@ -1,6 +1,8 @@
 知乎日报-webapp
   技术栈：create-react-app、React18、redux/react-redux/redux-toolkit、
-  react-router-dom、axios、css-in-js、less、AntdMobile ...
+  react-router-dom、axios、less、AntdMobile ...
+  
+  (css-in-js，即styled-components无法适配移动端，故不使用)
 
 
 从零开始构建React项目
