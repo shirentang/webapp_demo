@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 不设置viewport，浏览器会按照980的宽度来渲染，手机不足980，则会缩小渲染，还可以设置maximun-scale -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REM练习</title>
+    <!-- 插入初始化css（代办） -->
+    <link rel="stylesheet" href="src/assets/reset.css" />
+
+    <style>
+      /* 
+        实现REM响应式布局开发的步骤
+            @1 找参照的比例（例如设计稿的比例 -> 一半是750px），在这个比例下，给html.fontSize一个初始值
+            html {
+                font-size: 100px;
+                //750px的设计稿中，1rem=100px
+                //未来需要把设计稿中测量出来的尺寸转换为rem去设计
+            }
+            @2 需要当前设备的宽度，计算当前设计稿750来讲，缩放的比例：从而让rem的比例跟着缩放；
+            @3 给页面设置最大宽度，超过最大宽度750px时，不让rem比例继续变大，内容居中，左右两边留白。
+         */
+      html {
+        font-size: 100px;
+      }
+      html,body{
+        min-height: 100%;
+        background: #f4f4f4;
+      }
+      #root{
+        margin: 0 auto;
+        max-width: 750px;
+        height: 100%;
+        background: #fff;
+      }
+      .box {
+        width: 3.28rem;
+        height: 1.64rem;
+        line-height: 1.64rem;
+        text-align: center;
+        font-size: 0.4rem;
+        background: lightblue;
+      }
+    </style>
+    <script>
+      //计算当前设备下，rem和px的转换比例,用闭包避免污染
+      (function () {
+        const computed = () => {
+          let html = document.documentElement,
+            deviceW = html.clientWidth,
+            designW = 750;
+            if(deviceW>=designW){
+                html.style.fontSize='100px';
+                return;
+            }
+          let ratio = (deviceW * 100) / designW;
+          html.style.fontSize = ratio + "px";
+        };
+        computed();
+        window.addEventListener("resize", computed);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root">
+        <div class="box">123</div>
+    </div>
+  </body>
+</html>

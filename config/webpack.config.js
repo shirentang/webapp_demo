@@ -71,6 +71,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const lessRegex = /\.less$/;
 const lessModuleRegex = /\.module\.less$/;
+const px2rem=require('postcss-pxtorem');
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -147,6 +148,10 @@ module.exports = function (webpackEnv) {
                   // so that it honors browserslist config in package.json
                   // which in turn let's users customize the target behavior as per their needs.
                   'postcss-normalize',
+                  px2rem({
+                    rootValue:75, //基于lib-flexible，设置为1rem为75px。在webpack编译的时候，使用px2rem插件，将1rem=75px自动转换。
+                    propList:['*'] //对所有文件中的样式都生效 {包括antdmobile组件库中的样式}
+                  })
                 ]
               : [
                   'tailwindcss',

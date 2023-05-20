@@ -4,6 +4,7 @@
 
 
 从零开始构建React项目
+
     1.基于create-react-app创建工程化项目
          create-react-app
          yarn eject 暴露webpack配置
@@ -17,6 +18,8 @@
             + 配置REM响应式布局的处理(移动端): lib-flexible、postcss-pxtorem
             + 配置打包优化
             + ...    
+
+
     2.准备一些项目开发必备材料
         + publish下index.html的修改，图标的修改
         + src/api/http.js :对axios/fetch的二次封装
@@ -24,7 +27,23 @@
           1、reset.min.css清除浏览器默认样式
           2、images 静态资源图片
           3、utils.js 自己封装常用数据库（检测数据类型，设定有效期的localstorage存储，日期格式化之类的）
+
+
     3.配置好REM响应式布局&&样式处理
+      lib-flexible 设置REM和PX换算比例
+        + 根据设备宽度的变化自动计算
+        + html.style.fontSize = 设备的宽度/10 + ‘px‘
+      postss-pxtorem 把我们写的px单位，按照比例切成rem
+      -----
+      @1 需要在webpack中配置postcss-pxtorem
+      const px2rem=require('postcss-pxtorem')；
+      px2rem({
+              rootValue:75, //基于lib-flexible，设置为1rem为75px。在webpack编译的时候，使用px2rem插件，将1rem=75px自动转换。
+              propList:['*'] //对所有文件中的样式都生效 {包括antdmobile组件库中的样式}
+            })
+      @2 在入口中，倒入lib-flexible，确保在不同的设备上，可以等比例对rem的换算比例进行缩放
+
+
     4.配置路由管理
     5.配置redux架子
     6.其他的基础框架配置
