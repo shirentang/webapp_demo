@@ -30,10 +30,11 @@ const Element = function Element(props) {
 
 export default function RouterView() {
   return (
-    <Suspense fallback={<Mask visible={true}>
+    <Suspense fallback={
+    <Mask visible={true}>
       <SpinLoading color='default' style={{ '--size': '48px' }} />
-      加载中
-    </Mask> }>
+    </Mask> 
+    }>
       <Routes>
         {routes.map((item) => {
           let { name, path } = item;
