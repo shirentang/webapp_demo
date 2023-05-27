@@ -5,6 +5,11 @@ import App from "./App"
 //改变REM换算比例
 import 'lib-flexible'
 
+//redux
+import { Provider } from "react-redux"
+import store from "./store"
+
+
 //配置antd-mobile的语法包，国际化处理
 import { ConfigProvider } from "antd-mobile";
 import zhCN from 'antd-mobile/es/locales/zh-CN'
@@ -46,6 +51,8 @@ import './index.less'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <ConfigProvider locale={zhCN}>
+      <Provider store={store}>
       <App />
+      </Provider>
     </ConfigProvider>
 )
