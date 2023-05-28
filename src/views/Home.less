@@ -1,0 +1,69 @@
+.home-box{
+    // 轮播图
+    .swiper-box{
+        box-sizing: border-box;
+        width: 750px;
+        height: 750px;
+        background: #DDD;
+
+        .adm-swiper{
+            height: 100%;
+        }
+
+        a {
+            display: block;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .desc {
+            position: absolute;
+            padding: 0 30px;
+            box-sizing: border-box;
+            width: 100%;
+            left: 0;
+            bottom: 40px;
+            
+            .title{
+                font-size: 36px;
+                color: #fff;
+            }
+
+            .author{
+                line-height: 50px;
+                font-size: 24px;
+                color: rgba(255,255,255,.7);
+            }
+        }
+
+        .adm-swiper-indicator{
+            bottom: 20px;
+            left: auto;
+            right: 0;
+            transform: translateX(-30px);
+        }
+
+        .adm-page-indicator-dot{
+            margin: 0 6px;
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255, .7);
+            border-radius: 50%;
+
+            &.adm-page-indicator-dot-active{
+                width: 36px;
+                border-radius: 6px;
+                background: #FFF;
+            }
+        } 
+
+        
+
+    }
+
+}

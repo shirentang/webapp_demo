@@ -1,7 +1,7 @@
 import { VAxios } from './axios'
 
 const local = {
-    baseURL: '',
+    baseURL: 'http://127.0.0.1:7100',
     timeout: 5*1000,
   }
 

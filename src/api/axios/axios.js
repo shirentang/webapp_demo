@@ -2,7 +2,7 @@ import axios, { AxiosHeaders } from 'axios'
 import { Modal } from 'antd-mobile'
 
 export class VAxios {
-  instance
+
   constructor(config) {
     this.instance = axios.create(config)
     this.setupInterceptors()
@@ -18,12 +18,12 @@ export class VAxios {
       (res) => {
         return res},
       (error) => {
-        Modal.alert({
-          content: '连接错误',
-          onConfirm: () => {
-            console.log('Confirmed')
-          },
-        })
+        // Modal.alert({
+        //   content: '连接错误',
+        //   onConfirm: () => {
+        //     console.log('Confirmed')
+        //   },
+        // })
         return Promise.reject(error)
       },
     )

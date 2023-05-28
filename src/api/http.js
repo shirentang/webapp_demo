@@ -7,7 +7,7 @@ const http = function http(config) {
   // initial config & validate
   if (!_.isPlainObject(config)) config = {};
   config = Object.assign({
-    url: '',
+    url: 'http://127.0.0.1:7100',
     method: 'GET',
     credentials: 'include',
     headers: null,
