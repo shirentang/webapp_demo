@@ -15,11 +15,20 @@
             height: 100%;
         }
 
+        .adm-image,
         img {
             display: block;
             width: 100%;
             height: 100%;
+
+            .adm-image-tip {
+                svg{
+                    width: 20%;
+                    height: 20%;
+                }
+            }
         }
+
 
         .desc {
             position: absolute;
@@ -66,4 +75,23 @@
 
     }
 
+    //加载更多
+    .loadmore-box{
+        height: 80px;
+        line-height: 80px;
+        background: #EEE;
+        text-align: center;
+        font-size: 24px;
+        color: #999;
+
+        .adm-dot-loading {
+            font-size: 32px;
+        }
+    }
+
+    //新闻列表  
+    .news-box{
+        padding: 10px 30px;
+    }
+    
 }

@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from "react";
 import HomeHead from "../components/HomeHead";
 import _ from '../assets/utils'
-import { Swiper } from "antd-mobile";
+import { Swiper,Image,Divider,DotLoading } from "antd-mobile";
 import { Link } from "react-router-dom";
 import api from '../api'
+import NewsItem from "../components/NewsItem";
+import SkeletonAgain from '../components/SkeletonAgain'
 
 import './Home.less'
 import thunk from "redux-thunk";
@@ -41,7 +43,7 @@ const Home = function Home(){
                         <Link to={{
                             pathname:`/detail/${id}`
                         }}>
-                            <img src={image} alt="" />
+                            <Image src={image} lazy/>
                             <div className="desc">
                                 <h3 className="title">{title}</h3>
                                 <p className="author">{hint}</p>
@@ -51,6 +53,52 @@ const Home = function Home(){
                     })}
                 </Swiper> : null}                
             </div>
+
+            {/* 新闻列表 */}
+            <SkeletonAgain/>
+
+            <div className="news-box">
+                <Divider contentPosition="left">
+                    12月23日
+                </Divider>
+                <div className="list">
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                </div>
+            </div>
+            
+            <div className="news-box">
+                <Divider contentPosition="left">
+                    12月23日
+                </Divider>
+                <div className="list">
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                </div>
+            </div>
+
+            <div className="news-box">
+                <Divider contentPosition="left">
+                    12月23日
+                </Divider>
+                <div className="list">
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                    <NewsItem />
+                </div>
+            </div>
+            
+            {/* 加载更多的盒子（intersectionobsever） */}
+            <div className="loadmore-box">
+                <DotLoading />
+                数据加载中
+            </div>
+
         </div>
     )
 };

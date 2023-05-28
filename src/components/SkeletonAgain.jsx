@@ -1,5 +1,6 @@
 import React from "react";
 import { Skeleton } from "antd-mobile";
+import './SkeletonAgain.less'
 
 const SkeletonAgain = function SkeletonAgain(){
     return <div className="skeleton-again-box">
