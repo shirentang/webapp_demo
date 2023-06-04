@@ -32,12 +32,28 @@ const queryStoryExtra = (id) =>{
     })
 }
 
+//发送验证码
+const sendPhoneCode=(phone)=>{
+    return http.post('/api/phone_code',{
+        phone
+    })
+}
+
+//登陆/注册
+const login=(phone,code)=>{
+    return http.post('/api/login',{
+        phone,
+        code
+    })
+}
 
 const api = {
     queryNewsLatest,
     queryNewsBefore,
     queryNewsInfo,
-    queryStoryExtra
+    queryStoryExtra,
+    sendPhoneCode,
+    login
 }
 
 export default api
