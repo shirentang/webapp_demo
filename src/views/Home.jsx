@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import HomeHead from "../components/HomeHead";
 import _ from "../assets/utils";
-import { Swiper, Image, Divider, DotLoading } from "antd-mobile";
+import { Swiper, Image, Divider, DotLoading,SafeArea } from "antd-mobile";
 import { Link } from "react-router-dom";
 import api from "../api";
 import NewsItem from "../components/NewsItem";
@@ -15,6 +15,7 @@ const Home = function Home() {
   let [today, setToday] = useState(_.formatTime(null, "{0}{1}{2}")),
     [bannerData, setBannerData] = useState([]),
     [newsList, setNewsList] = useState([]);
+  let loadMore=useRef();
 
   //第一次渲染完后向服务器发送请求
   useEffect(() => {
@@ -23,7 +24,6 @@ const Home = function Home() {
         let { date, stories, top_stories } = await api.queryNewsLatest();
         setToday(date);
         setBannerData(top_stories);
-
         newsList.push({
           date,
           stories,
@@ -32,6 +32,32 @@ const Home = function Home() {
       } catch (_) {}
     })();
   }, []);
+
+  //第一次渲染完设置监听器，实现触底加载,组件释放时候记得移除设定的事件
+  useEffect(()=>{
+    let ob =new IntersectionObserver(async (changes)=>{
+      let {isIntersecting}=changes[0]
+      if(isIntersecting){
+        //加载更多的按钮出现在窗口中,执行以下行为
+        try {
+          let time = newsList[newsList.length-1]['date'];
+          let res = await api.queryNewsBefore(time);
+          newsList.push(res);
+          setNewsList([...newsList]);
+        } catch (_) {}        
+        
+      }
+    })
+    let loadMoreBox =loadMore.current;
+    ob.observe(loadMore.current)
+    
+
+    //return会在组件释放的时候执行
+    return ()=>{
+      ob.unobserve(loadMoreBox);
+      ob=null
+    }
+  },[])
 
   //处理时间
 
@@ -92,11 +118,17 @@ const Home = function Home() {
       )}
 
       {/* 加载更多的盒子（intersectionobsever） */}
-      <div className="loadmore-box">
+      <div className="loadmore-box" ref={loadMore} style={{display:newsList.length === 0? 'none':'block'}}>
         <DotLoading />
         数据加载中
       </div>
+
+     {/* 安全区 */}
+
+      <SafeArea position="bottom"/>
     </div>
+
+    
   );
 };
 export default Home;
