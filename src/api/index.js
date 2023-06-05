@@ -47,13 +47,17 @@ const login=(phone,code)=>{
     })
 }
 
+//获取登陆者信息
+const queryUserInfo = () => http.get('/api/user_info')
+
 const api = {
     queryNewsLatest,
     queryNewsBefore,
     queryNewsInfo,
     queryStoryExtra,
     sendPhoneCode,
-    login
+    login,
+    queryUserInfo
 }
 
 export default api
