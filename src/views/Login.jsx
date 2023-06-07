@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import NavBarAgain from "../components/NavBarAgain";
-import "./Login.less";
+import { connect } from "react-redux";
+import action from '../store/action'
 import { Form, Input, Toast } from "antd-mobile";
 import ButtonAgain from "../components/ButtonAgain";
+import NavBarAgain from "../components/NavBarAgain";
 import api from "../api";
+
+import "./Login.less";
 
 //引入具备有效期的localstorage
 import _ from '../assets/utils'
@@ -28,7 +31,8 @@ const validate = {
   },
 };
 
-const Login = function Login() {
+const Login = function Login(props) {
+  let { queryUserInfoAsync, navigate, usp } = props;
   //状态
   const [formIns] = Form.useForm(),
     [disabled, setDisabled] = useState(false),
@@ -50,7 +54,19 @@ const Login = function Login() {
       }
       //登陆成功，存储token，登陆者信息，提示，跳转
       _.storage.set('tk',token);
-      
+      await queryUserInfoAsync();//派发任务，同步redux中的状态信息
+      Toast.show({
+        icon:'success',
+        content:'登录成功'
+      });
+      let to = usp.get('to');
+      to?navigate(to,{replace:true}):navigate(-1);
+
+      navigate.push({
+        pathname:'',
+        search:'',
+      },{state:''})
+      navigate()
 
 
     } catch (error) {}
@@ -147,4 +163,7 @@ const Login = function Login() {
     </div>
   );
 };
-export default Login;
+
+
+export default connect(null,
+  action.base)(Login);
