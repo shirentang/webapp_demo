@@ -4,7 +4,7 @@ import storeReducer from './store'
 
 const reducer = combineReducers({
     base:baseReducer,
-    stoer:storeReducer
+    store:storeReducer
 })
 
 export default reducer;
