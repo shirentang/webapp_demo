@@ -150,7 +150,7 @@ const Detail = function Detail(props) {
       removeStoreListById(item.id);
       return;
     }
-
+    
     //收藏
     try {
       let { code } = await api.store(params.id);

@@ -64,9 +64,13 @@ const storeRemove = (id)=>{
     })
 }
 
+//获取收藏列表
 const storeList = ()=>{
     return http.get('/api/store_list')
 }
+
+//图片上传
+
 
 const api = {
     queryNewsLatest,

@@ -1,5 +1,5 @@
 import React, { Suspense,useEffect,useState } from "react";
-import { Routes, Route,useNavigate,useLocation,useParams,useSearchParams,Navigate } from "react-router-dom";
+import { Routes, Route,useNavigate,useLocation,useParams,useSearchParams } from "react-router-dom";
 
 import routes from "./routes";
 
