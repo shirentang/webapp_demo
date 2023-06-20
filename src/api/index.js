@@ -69,8 +69,20 @@ const storeList = ()=>{
     return http.get('/api/store_list')
 }
 
-//图片上传
+//图片上传(要求fromdata格式)
+const upload = (file)=>{
+    let fm = new FormData();
+    fm.append('file',file);
+    return http.post('/api/upload',fm)
+}
 
+//修改个人信息
+const userUpdate = (username,pic)=>{
+    return http.post('/api/user_update',{
+        username,
+        pic
+    })
+}
 
 const api = {
     queryNewsLatest,
@@ -82,7 +94,9 @@ const api = {
     queryUserInfo,
     store,
     storeRemove,
-    storeList
+    storeList,
+    upload,
+    userUpdate
 }
 
 export default api
