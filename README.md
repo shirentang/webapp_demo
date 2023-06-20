@@ -56,31 +56,49 @@
         + 测试
         + 部署上线（阿里云服务器）
 
+
 知乎日报-后端：zhihu_admin
+
   后端数据库借口分为两部分：
+
     1.从知乎官方辣去实时数据[新闻、新闻详情、评论数等]
+
     2.自己研发的个人中心系统[登陆/注册、发送验证码、个人信息获取和修改、收藏体系]
+
   后端技术栈：
+
     Node、Express
+
     数据存储：
+
     用json文件的方式代替专业数据库的存储。[现在主流的专业数据库：mongodb、MySQL]
+
   如何启动后段和配置修改：
+
     1.环境
+
     2.在package.json中，修改后端服务的配置项
+
         "config":{
             "server":7100,//后端启动服务器端口
             "secret":"ZFPX"，//JWT算法相关
             "maxAge":"7d"
         }
+
     3.API.txt文档
+
         code.txt 存储发送的手机验证码
+
     4.启动后端
+
         $ node server.js 启动后端（终端窗口关闭，启动的服务器会停止，pm2不会）
         ---
-        $ pm2 start server.js --name zhihu 用pm2持久管理服务
-    5.验证后端是否启动成功
-        http://127.0.0.1:7100/news_latest 获取到数据说明启动成功
 
+        $ pm2 start server.js --name zhihu 用pm2持久管理服务
+
+    5.验证后端是否启动成功
+
+        http://127.0.0.1:7100/news_latest 获取到数据说明启动成功
 
 
 
