@@ -5,8 +5,6 @@
 
 
 
-从零开始构建React项目
-
     1.基于create-react-app创建工程化项目
          create-react-app
          yarn eject 暴露webpack配置
@@ -103,6 +101,5 @@
 
 
 
-
-
+    项目难点（待更新）：
       用函数组件来写路由，避免withrouter(函数组件对于类组件的好处)
